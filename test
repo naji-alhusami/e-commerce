@@ -1,0 +1,38 @@
+creating slef server:
+1-create server.ts file. (in app route)
+2-npm install express
+3-npm i --save-dev @types/express (for express types)
+4-we create express and PORT.
+5-create getPayloadClient inside start function (it is better to write the function in separate function (in app route)).
+pass initOptions and set express to app and onInit
+# go to writing get-payload part.
+we write the app.use for nextHandler and write nextHandler in next-utils that we use for initializing a Next.js application.
+we prepare() the nextjs app and listen to the port
+at the ennnnd of the server.ts we call start() function
+# we go to package.json
+
+
+------
+
+inside get-payload file:
+(before start writing the getPayloadClient function)
+we get the env var using dotenv (npm install dotenv).
+we write the functionality of sending email for verification using nodemailer (transporter).
+retrieve the cached data from the global object
+if we don't have cached data we set  the client and promise to null
+
+(start writing the getPayloadClient function)
+npm install payload
+we write interface named Args before the function and have initOptions as optional of type Partial<InitOptions> to write it inside the function.
+if we don't have PAYLOAD SECRET, we throw error.
+if we have cached.client we return it
+if we don't have cached.promise we set it by initializing the secret and local.
+then try for setting the client cached to promis (await) and catch for setting the promise to null.
+return the cached.client.
+# go back to server.ts
+
+-------------
+package.json:
+npm install corss-env ("cross-env" is a valuable npm package for managing environment variables in a Node.js project. It ensures (more or less) consistent behavior across different platforms by setting environment variables regardless of the operating system)
+inside scripts -> dev -> "dev" "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon"
+nodemon (Nodemon is a command-line tool that helps with the speedy development of Node. js applications. It monitors your project directory and automatically restarts your node application when it detects any changes.)
