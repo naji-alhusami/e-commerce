@@ -45,16 +45,16 @@ export const Products: CollectionConfig = {
       options: PRODUCT_CATEGORIES.map(({ label, value }) => ({ label, value })),
       required: true,
     },
-    // {
-    //   name: "product_files", //product name
-    //   label: "Product file(s)", // label in admin dashboard
-    //   type: "relationship",
-    //   required: true,
-    //   relationTo: "product_files",
-    //   hasMany: false,
-    // },
     {
-      name: "approvedForSales", // admins only approve for this NOT users
+      name: "product_files", //product name
+      label: "Product file(s)", // label in admin dashboard
+      type: "relationship",
+      required: true,
+      relationTo: "product_files",
+      hasMany: false,
+    },
+    {
+      name: "approvedForSale", // admins only approve for this NOT users
       label: "Product Status",
       type: "select",
       defaultValue: "pending",
